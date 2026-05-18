@@ -35,6 +35,26 @@ function AnimatedNumber({ target, suffix = '' }) {
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
+function FadeInUp({ children, delay = 0, style: s = {} }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
+    }, { threshold: 0.12 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0) scale(1)' : 'translateY(24px) scale(0.97)',
+      transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
+      ...s,
+    }}>{children}</div>
+  );
+}
+
 function LogoSlider() {
   const logos = [
     { src: '/images/logos/bvh.png', alt: 'BVH' },
@@ -203,14 +223,16 @@ function UeberUns() {
         <p style={{ fontSize: 16, color: TEXT_MUTED, lineHeight: 1.7 }}>Bei uns bekommst du nicht nur Theorie, sondern Einblicke in die Praxis. Wir bringen Studierende mit Unternehmen zusammen, organisieren Workshops und Vorträge und schaffen ein Umfeld, in dem man lernt und gleichzeitig Spaß hat.</p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginTop: 56 }}>
-        {[{ icon: '📍', text: 'Nördlichster Verein im BVH', href: 'https://www.bvh.org' },{ icon: '🤝', text: 'Direkter Draht zu Unternehmen', href: null },{ icon: '🏛', text: 'BVH-Konferenz in Frankfurt', href: null },{ icon: '📜', text: 'Börsenführerschein & Netzwerk', href: null },{ icon: '👥', text: 'Community mit gleichen Interessen', href: null }].map(f => (
-          <HoverCard key={f.text} style={{ padding: '24px 20px', textAlign: 'center', background: BG }}>
-            <div style={{ fontSize: 26, marginBottom: 10 }}>{f.icon}</div>
-            {f.href
-              ? <a href={f.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, fontWeight: 600, color: BLUE }}>{f.text} ↗</a>
-              : <div style={{ fontSize: 14, fontWeight: 600, color: ACCENT }}>{f.text}</div>
-            }
-          </HoverCard>
+        {[{ icon: '📍', text: 'Nördlichster Verein im BVH', href: 'https://www.bvh.org' },{ icon: '🤝', text: 'Direkter Draht zu Unternehmen', href: null },{ icon: '🏛', text: 'BVH-Konferenz in Frankfurt', href: null },{ icon: '📜', text: 'Börsenführerschein & Netzwerk', href: null },{ icon: '👥', text: 'Community mit gleichen Interessen', href: null }].map((f, i) => (
+          <FadeInUp key={f.text} delay={i * 90}>
+            <HoverCard style={{ padding: '24px 20px', textAlign: 'center', background: BG, height: '100%' }}>
+              <div style={{ fontSize: 26, marginBottom: 10 }}>{f.icon}</div>
+              {f.href
+                ? <a href={f.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, fontWeight: 600, color: BLUE }}>{f.text} ↗</a>
+                : <div style={{ fontSize: 14, fontWeight: 600, color: ACCENT }}>{f.text}</div>
+              }
+            </HoverCard>
+          </FadeInUp>
         ))}
       </div>
     </Section>
@@ -295,33 +317,37 @@ function PartnerSection() {
     <Section id="partner" bg={BG}>
       <SectionHeader tag="Kooperationen" title="Unsere Partner" subtitle="Gemeinsam schaffen wir echten Mehrwert für unsere Mitglieder." />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginBottom: 48 }}>
-        {partners.map(p => (
-          <HoverCard key={p.name} style={{ padding: '28px 28px 28px' }}>
-            <div style={{ height: 64, display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-              <img src={p.logo} alt={p.name} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain' }}
-                onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
-              <span style={{ display: 'none', fontSize: 20, fontWeight: 700, color: ACCENT }}>{p.name}</span>
-            </div>
-            <h3 style={{ fontSize: 17, fontWeight: 700, color: ACCENT, marginBottom: 10 }}>{p.name}</h3>
-            <p style={{ fontSize: 14, color: TEXT_MUTED, lineHeight: 1.6, marginBottom: p.href ? 16 : 0 }}>{p.desc}</p>
-            {p.href && (
-              <a href={p.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: BLUE, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                Website besuchen
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
-            )}
-          </HoverCard>
+        {partners.map((p, i) => (
+          <FadeInUp key={p.name} delay={i * 100}>
+            <HoverCard style={{ padding: '28px 28px 28px', height: '100%' }}>
+              <div style={{ height: 64, display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+                <img src={p.logo} alt={p.name} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain' }}
+                  onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                <span style={{ display: 'none', fontSize: 20, fontWeight: 700, color: ACCENT }}>{p.name}</span>
+              </div>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: ACCENT, marginBottom: 10 }}>{p.name}</h3>
+              <p style={{ fontSize: 14, color: TEXT_MUTED, lineHeight: 1.6, marginBottom: p.href ? 16 : 0 }}>{p.desc}</p>
+              {p.href && (
+                <a href={p.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: BLUE, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  Website besuchen
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+              )}
+            </HoverCard>
+          </FadeInUp>
         ))}
-        <Link href="/kontakt" style={{ textDecoration: 'none', borderRadius: 12, border: `2px dashed ${BORDER}`, padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 12, transition: 'border-color 0.2s, background 0.2s', minHeight: 180, background: 'transparent', cursor: 'pointer' }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.background = `${BLUE}06`; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.background = 'transparent'; }}>
-          <div style={{ width: 44, height: 44, borderRadius: '50%', border: `1.5px dashed ${BLUE}60`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={BLUE} strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
-          </div>
-          <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT }}>Hier könnte Ihr Unternehmen stehen</div>
-          <div style={{ fontSize: 13, color: TEXT_MUTED, lineHeight: 1.5 }}>Werden Sie Partner des BFC Flensburg und erreichen Sie motivierte Studierende.</div>
-          <div style={{ fontSize: 13, fontWeight: 600, color: BLUE }}>Jetzt Kontakt aufnehmen →</div>
-        </Link>
+        <FadeInUp delay={partners.length * 100}>
+          <Link href="/kontakt" style={{ textDecoration: 'none', borderRadius: 12, border: `2px dashed ${BORDER}`, padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 12, transition: 'border-color 0.2s, background 0.2s', minHeight: 180, background: 'transparent', cursor: 'pointer', height: '100%', boxSizing: 'border-box' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.background = `${BLUE}06`; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.background = 'transparent'; }}>
+            <div style={{ width: 44, height: 44, borderRadius: '50%', border: `1.5px dashed ${BLUE}60`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={BLUE} strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT }}>Hier könnte Ihr Unternehmen stehen</div>
+            <div style={{ fontSize: 13, color: TEXT_MUTED, lineHeight: 1.5 }}>Werden Sie Partner des BFC Flensburg und erreichen Sie motivierte Studierende.</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: BLUE }}>Jetzt Kontakt aufnehmen →</div>
+          </Link>
+        </FadeInUp>
       </div>
       <div style={{ marginBottom: 48 }}>
         <div style={{ textAlign: 'center', fontSize: 12, fontWeight: 700, color: TEXT_MUTED, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 20 }}>Zugang zu Fachzeitschriften & weiteren Partnern</div>
