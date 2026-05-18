@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef } from "react";
+import Link from "next/link";
 
 const ACCENT = "#0A2540";
 const ACCENT_LIGHT = "#1a3a5c";
@@ -90,11 +91,9 @@ function Input({ label, error, required, ...props }) {
         onFocus={(e) => { setFocused(true); props.onFocus?.(e); }}
         onBlur={(e) => { setFocused(false); props.onBlur?.(e); }}
       />
-      {error && (
-        <span style={{ fontSize: 12, color: ERROR, marginTop: 4, display: "block", fontFamily: "'DM Sans', sans-serif" }}>
-          {error}
-        </span>
-      )}
+      <span style={{ fontSize: 12, color: ERROR, marginTop: 4, display: "block", fontFamily: "'DM Sans', sans-serif", minHeight: 18, visibility: error ? "visible" : "hidden" }}>
+        {error || " "}
+      </span>
     </div>
   );
 }
@@ -275,6 +274,13 @@ export default function BFCMitgliedsantrag() {
         position: "relative",
         overflow: "hidden",
       }}>
+        <Link href="/" style={{ position: "absolute", top: 20, left: 20, display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.7)", textDecoration: "none", zIndex: 2, transition: "color 0.2s" }}
+          onMouseEnter={e => e.currentTarget.style.color = "white"}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Zurück zur Startseite
+        </Link>
         <div style={{
           position: "absolute",
           top: 0, left: 0, right: 0, bottom: 0,
@@ -312,7 +318,7 @@ export default function BFCMitgliedsantrag() {
       </div>
 
       {/* Form */}
-      <div ref={formRef} style={{ maxWidth: 640, margin: "-24px auto 0", padding: "0 20px 60px", position: "relative", zIndex: 2 }}>
+      <div ref={formRef} style={{ maxWidth: 640, margin: "0 auto", padding: "32px 20px 60px", position: "relative", zIndex: 2 }}>
 
         {/* Konditionen */}
         <div style={{ ...sectionStyle, background: `${GOLD}08`, borderColor: `${GOLD}30` }}>
@@ -349,7 +355,7 @@ export default function BFCMitgliedsantrag() {
         {/* Persönliche Daten */}
         <div style={sectionStyle}>
           <div style={{ fontSize: 13, fontWeight: 600, color: ACCENT, marginBottom: 20, letterSpacing: "0.02em", textTransform: "uppercase" }}>Persönliche Daten</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+          <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
             <div data-error={!!errors.vorname || undefined}>
               <Input label="Vorname" required value={form.vorname} onChange={set("vorname")} error={errors.vorname} />
             </div>
@@ -360,7 +366,7 @@ export default function BFCMitgliedsantrag() {
           <div data-error={!!errors.strasse || undefined}>
             <Input label="Straße und Hausnummer" required value={form.strasse} onChange={set("strasse")} error={errors.strasse} />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "0 16px" }}>
+          <div className="form-grid-plz" style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "0 16px" }}>
             <div data-error={!!errors.plz || undefined}>
               <Input label="PLZ" required value={form.plz} onChange={set("plz")} error={errors.plz} maxLength={5} />
             </div>

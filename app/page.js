@@ -132,7 +132,7 @@ function Hero() {
           <Link href="/mitglied" style={{ padding: '14px 32px', background: BLUE, color: 'white', fontSize: 15, fontWeight: 600, borderRadius: 10, boxShadow: `0 4px 24px rgba(33,150,243,0.5)` }}>Mitglied werden</Link>
           <a href="#vorteile" style={{ padding: '14px 32px', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', color: 'white', fontSize: 15, fontWeight: 500, borderRadius: 10, border: '1px solid rgba(255,255,255,0.25)' }}>Mehr erfahren</a>
         </div>
-        <div style={{ display: 'flex', gap: 0, justifyContent: 'center', marginTop: 72, flexWrap: 'wrap' }}>
+        <div className="hero-stats" style={{ display: 'flex', gap: 0, justifyContent: 'center', marginTop: 72, flexWrap: 'wrap' }}>
           {[{ num: 100, suffix: '+', label: 'Mitglieder' },{ num: 20, suffix: '+', label: 'Events / Jahr' },{ num: 70, suffix: '+', label: 'Vereine im BVH' }].map((s, i) => (
             <div key={s.label} style={{ padding: '0 40px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.15)' : 'none' }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: 42, fontWeight: 700, color: 'white', lineHeight: 1 }}><AnimatedNumber target={s.num} suffix={s.suffix} /></div>
@@ -181,10 +181,10 @@ function ChristianRoehl() {
   );
 }
 
-function HoverCard({ children, style: s = {} }) {
+function HoverCard({ children, style: s = {}, className = '' }) {
   const [h, setH] = useState(false);
   return (
-    <div onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)} style={{
+    <div onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)} className={className} style={{
       background: CARD_BG, borderRadius: 12, border: `1px solid ${BORDER}`,
       transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
       transform: h ? 'translateY(-4px)' : 'translateY(0)',
@@ -289,6 +289,7 @@ function PartnerSection() {
     { name: 'Bundesverband der Börsenvereine (BVH)', desc: 'Dachverband von über 70 Hochschulvereinen & über 24.000 Studierenden. Mehr Infos & alle Vereine auf bvh.org.', logo: '/images/logos/bvh.png', href: 'https://www.bvh.org' },
     { name: 'BDO', desc: 'Internationale Wirtschaftsprüfungs- und Beratungsgesellschaft. Über 94.000 Mitarbeiter in 169 Ländern.', logo: '/images/logos/bdo.png', href: null },
     { name: 'PrepLounge', desc: 'Die führende Plattform für Interview-Vorbereitung in Consulting und Finance.', logo: '/images/logos/preplounge.png', href: null },
+    { name: 'Finanzfluss', desc: 'Deutschlands führende Plattform für Finanzbildung — mit über 1,5 Mio. YouTube-Abonnenten und finanzfluss.de.', logo: '/images/logos/finanzfluss.png', href: 'https://www.finanzfluss.de' },
   ];
   return (
     <Section id="partner" bg={BG}>
@@ -297,7 +298,9 @@ function PartnerSection() {
         {partners.map(p => (
           <HoverCard key={p.name} style={{ padding: '28px 28px 28px' }}>
             <div style={{ height: 64, display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-              <img src={p.logo} alt={p.name} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain' }} />
+              <img src={p.logo} alt={p.name} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain' }}
+                onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+              <span style={{ display: 'none', fontSize: 20, fontWeight: 700, color: ACCENT }}>{p.name}</span>
             </div>
             <h3 style={{ fontSize: 17, fontWeight: 700, color: ACCENT, marginBottom: 10 }}>{p.name}</h3>
             <p style={{ fontSize: 14, color: TEXT_MUTED, lineHeight: 1.6, marginBottom: p.href ? 16 : 0 }}>{p.desc}</p>
@@ -309,12 +312,22 @@ function PartnerSection() {
             )}
           </HoverCard>
         ))}
+        <a href="mailto:info@bfc-flensburg.de" style={{ textDecoration: 'none', borderRadius: 12, border: `2px dashed ${BORDER}`, padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 12, transition: 'border-color 0.2s, background 0.2s', minHeight: 180, background: 'transparent', cursor: 'pointer' }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.background = `${BLUE}06`; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.background = 'transparent'; }}>
+          <div style={{ width: 44, height: 44, borderRadius: '50%', border: `1.5px dashed ${BLUE}60`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={BLUE} strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT }}>Hier könnte Ihr Unternehmen stehen</div>
+          <div style={{ fontSize: 13, color: TEXT_MUTED, lineHeight: 1.5 }}>Werden Sie Partner des BFC Flensburg und erreichen Sie motivierte Studierende.</div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: BLUE }}>Jetzt Kontakt aufnehmen →</div>
+        </a>
       </div>
       <div style={{ marginBottom: 48 }}>
         <div style={{ textAlign: 'center', fontSize: 12, fontWeight: 700, color: TEXT_MUTED, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 20 }}>Zugang zu Fachzeitschriften & weiteren Partnern</div>
         <LogoSlider />
       </div>
-      <HoverCard style={{ padding: '32px 36px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, borderColor: `${BLUE}25` }}>
+      <HoverCard style={{ padding: '32px 36px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, borderColor: `${BLUE}25` }} className="partner-cta">
         <div>
           <div style={{ fontSize: 18, fontWeight: 700, color: ACCENT, marginBottom: 4 }}>Sie möchten motivierte Studierende erreichen?</div>
           <div style={{ fontSize: 14, color: TEXT_MUTED }}>Workshops, Unternehmenspräsentationen, Networking-Events — wir machen es möglich.</div>
@@ -330,11 +343,21 @@ function Events() {
   return (
     <Section id="events" bg={BG}>
       <SectionHeader tag="Events" title="Über 20 Veranstaltungen im letzten Jahr" subtitle="Und wir bauen weiter aus." />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
-        <HoverCard style={{ padding: '32px 28px', background: `linear-gradient(135deg, ${ACCENT}, #1554BB)` }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: BLUE, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Highlight</div>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, color: 'white', marginBottom: 12 }}>BVH-Konferenz in Frankfurt</h3>
-          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>Ein Wochenende mit Studierenden aus ganz Deutschland. Business Speed-Dating, Workshops, Börsenführung und Networking mit großen Unternehmen.</p>
+      <div className="events-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+        <HoverCard style={{ padding: 0, overflow: 'hidden', background: `linear-gradient(135deg, ${ACCENT}, #1554BB)` }}>
+          <div style={{ padding: '32px 28px 20px' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: BLUE, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Highlight</div>
+            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, color: 'white', marginBottom: 12 }}>BVH-Konferenz in Frankfurt</h3>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>Ein Wochenende mit Studierenden aus ganz Deutschland. Business Speed-Dating, Workshops, Börsenführung und Networking mit großen Unternehmen.</p>
+          </div>
+          <div className="bvh-photos" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, padding: '0 12px 12px' }}>
+            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4' }}>
+              <img src="/images/bvh-boerse.jpg" alt="Deutsche Börse Frankfurt" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} />
+            </div>
+            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4' }}>
+              <img src="/images/bvh-gebaeude.jpg" alt="BVH Konferenz Frankfurt" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
+            </div>
+          </div>
         </HoverCard>
         <HoverCard style={{ padding: '32px 28px' }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: BLUE, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>Unsere Formate</div>
@@ -518,10 +541,10 @@ export default function Home() {
       <Nav />
       <Hero />
       <UeberUns />
+      <PartnerSection />
       <ChristianRoehl />
       <Vorteile />
       <ImageBreak />
-      <PartnerSection />
       <Events />
       <PhotoMosaic />
       <MitgliedCTA />

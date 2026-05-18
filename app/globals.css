@@ -44,3 +44,52 @@ img {
   background: var(--blue);
   color: white;
 }
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Hero stats row */
+  .hero-stats {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .hero-stats > div {
+    padding: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 20px !important;
+  }
+  .hero-stats > div:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Section padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Partner CTA card */
+  .partner-cta { flex-direction: column !important; align-items: flex-start !important; }
+
+  /* Footer columns */
+  .footer-links { gap: 20px !important; }
+
+  /* Form grid — stack first/last name and PLZ/city */
+  .form-grid-2 { grid-template-columns: 1fr !important; }
+  .form-grid-plz { grid-template-columns: 1fr !important; }
+
+  /* BVH photos in portrait card */
+  .bvh-photos { grid-template-columns: 1fr !important; }
+
+  /* Events card grid */
+  .events-grid { grid-template-columns: 1fr !important; }
+
+  /* Mitglied back button */
+  .mitglied-back { font-size: 12px !important; }
+}
+
+@media (max-width: 480px) {
+  /* Tighten nav logo text */
+  .nav-brand-text { display: none !important; }
+
+  /* Kondition buttons stack */
+  .kondition-grid { flex-direction: column !important; }
+}
