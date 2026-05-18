@@ -517,6 +517,7 @@ function Footer() {
               <div style={{ fontSize: 12, fontWeight: 700, color: BLUE, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Kontakt</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <a href="mailto:info@bfc-flensburg.de" style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>info@bfc-flensburg.de</a>
+                <Link href="/kontakt" style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Kontaktformular</Link>
                 <a href="https://www.instagram.com/bfc.flensburg/" target="_blank" rel="noopener" style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Instagram</a>
                 <a href="https://www.linkedin.com/company/bfc-flensburg" target="_blank" rel="noopener" style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>LinkedIn</a>
               </div>
