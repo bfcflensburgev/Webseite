@@ -1,0 +1,46 @@
+:root {
+  --accent: #0C3573;
+  --accent-light: #1554BB;
+  --blue: #2196F3;
+  --bg: #FFFFFF;
+  --card: #FFFFFF;
+  --border: #BDD7F5;
+  --text: #1a1a1a;
+  --text-muted: #6B7280;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--blue);
+  color: white;
+}

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof -ti:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/team)",
+      "WebFetch(domain:www.boersenparkett.org)",
+      "Bash(find /tmp -name \"*.jpg\" -o -name \"*.png\" -o -name \"*.jpeg\" 2>/dev/null | head -20 && find /var/folders -name \"*.jpg\" 2>/dev/null | head -10)",
+      "Read(//private/tmp/**)",
+      "Read(//private/var/folders/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(identify /Users/daneel/Downloads/bfc-website-2/public/images/logos/bvh.png)",
+      "Bash(sips -g hasAlpha /Users/daneel/Downloads/bfc-website-2/public/images/logos/bvh.png /Users/daneel/Downloads/bfc-website-2/public/images/logos/bdo.png)",
+      "WebFetch(domain:bfc.pn6.de)",
+      "Bash(sips -g pixelWidth,pixelHeight /Users/daneel/Downloads/bfc-website-2/public/images/team/christian-roehl.jpeg)",
+      "Bash(sips -g hasAlpha,format /Users/daneel/Downloads/bfc-website-2/public/images/logos/bvh.png /Users/daneel/Downloads/bfc-website-2/public/images/logos/bdo.png /Users/daneel/Downloads/bfc-website-2/public/images/logos/preplounge.png)"
+    ]
+  }
+}
