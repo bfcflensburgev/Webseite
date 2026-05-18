@@ -287,8 +287,8 @@ function TeamPreview() {
 function PartnerSection() {
   const partners = [
     { name: 'Bundesverband der Börsenvereine (BVH)', desc: 'Dachverband von über 70 Hochschulvereinen & über 24.000 Studierenden. Mehr Infos & alle Vereine auf bvh.org.', logo: '/images/logos/bvh.png', href: 'https://www.bvh.org' },
-    { name: 'BDO', desc: 'Internationale Wirtschaftsprüfungs- und Beratungsgesellschaft. Über 94.000 Mitarbeiter in 169 Ländern.', logo: '/images/logos/bdo.png', href: null },
-    { name: 'PrepLounge', desc: 'Die führende Plattform für Interview-Vorbereitung in Consulting und Finance.', logo: '/images/logos/preplounge.png', href: null },
+    { name: 'BDO', desc: 'Internationale Wirtschaftsprüfungs- und Beratungsgesellschaft. Über 94.000 Mitarbeiter in 169 Ländern.', logo: '/images/logos/bdo.png', href: 'https://www.bdo.de' },
+    { name: 'PrepLounge', desc: 'Die führende Plattform für Interview-Vorbereitung in Consulting und Finance.', logo: '/images/logos/preplounge.png', href: 'https://www.preplounge.com' },
     { name: 'Finanzfluss', desc: 'Deutschlands führende Plattform für Finanzbildung — mit über 1,5 Mio. YouTube-Abonnenten und finanzfluss.de.', logo: '/images/logos/Finanzfluss_Logo.png', href: 'https://www.finanzfluss.de' },
   ];
   return (
