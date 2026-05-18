@@ -369,7 +369,7 @@ export default function TeamPage() {
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/mitglied" style={{ padding: '13px 32px', background: BLUE, color: 'white', fontSize: 15, fontWeight: 600, borderRadius: 10, boxShadow: `0 4px 20px ${BLUE}30` }}>Jetzt Mitglied werden</Link>
-            <a href="mailto:info@bfc-flensburg.de" style={{ padding: '13px 32px', background: 'transparent', color: ACCENT, fontSize: 15, fontWeight: 600, borderRadius: 10, border: `1.5px solid ${BORDER}` }}>Kontakt aufnehmen</a>
+            <Link href="/kontakt" style={{ padding: '13px 32px', background: 'transparent', color: ACCENT, fontSize: 15, fontWeight: 600, borderRadius: 10, border: `1.5px solid ${BORDER}` }}>Kontakt aufnehmen</Link>
           </div>
         </div>
       </section>

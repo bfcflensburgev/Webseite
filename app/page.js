@@ -312,7 +312,7 @@ function PartnerSection() {
             )}
           </HoverCard>
         ))}
-        <a href="mailto:info@bfc-flensburg.de" style={{ textDecoration: 'none', borderRadius: 12, border: `2px dashed ${BORDER}`, padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 12, transition: 'border-color 0.2s, background 0.2s', minHeight: 180, background: 'transparent', cursor: 'pointer' }}
+        <Link href="/kontakt" style={{ textDecoration: 'none', borderRadius: 12, border: `2px dashed ${BORDER}`, padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: 12, transition: 'border-color 0.2s, background 0.2s', minHeight: 180, background: 'transparent', cursor: 'pointer' }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.background = `${BLUE}06`; }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.background = 'transparent'; }}>
           <div style={{ width: 44, height: 44, borderRadius: '50%', border: `1.5px dashed ${BLUE}60`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -321,7 +321,7 @@ function PartnerSection() {
           <div style={{ fontSize: 15, fontWeight: 700, color: ACCENT }}>Hier könnte Ihr Unternehmen stehen</div>
           <div style={{ fontSize: 13, color: TEXT_MUTED, lineHeight: 1.5 }}>Werden Sie Partner des BFC Flensburg und erreichen Sie motivierte Studierende.</div>
           <div style={{ fontSize: 13, fontWeight: 600, color: BLUE }}>Jetzt Kontakt aufnehmen →</div>
-        </a>
+        </Link>
       </div>
       <div style={{ marginBottom: 48 }}>
         <div style={{ textAlign: 'center', fontSize: 12, fontWeight: 700, color: TEXT_MUTED, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 20 }}>Zugang zu Fachzeitschriften & weiteren Partnern</div>
@@ -332,7 +332,7 @@ function PartnerSection() {
           <div style={{ fontSize: 18, fontWeight: 700, color: ACCENT, marginBottom: 4 }}>Sie möchten motivierte Studierende erreichen?</div>
           <div style={{ fontSize: 14, color: TEXT_MUTED }}>Workshops, Unternehmenspräsentationen, Networking-Events — wir machen es möglich.</div>
         </div>
-        <a href="mailto:info@bfc-flensburg.de" style={{ padding: '12px 28px', background: BLUE, color: 'white', fontSize: 14, fontWeight: 600, borderRadius: 8, whiteSpace: 'nowrap' }}>Kontakt aufnehmen</a>
+        <Link href="/kontakt" style={{ padding: '12px 28px', background: BLUE, color: 'white', fontSize: 14, fontWeight: 600, borderRadius: 8, whiteSpace: 'nowrap' }}>Kontakt aufnehmen</Link>
       </HoverCard>
     </Section>
   );
@@ -451,7 +451,7 @@ function MitgliedCTA() {
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/mitglied" style={{ padding: '14px 36px', background: 'white', color: ACCENT, fontSize: 15, fontWeight: 700, borderRadius: 10, boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}>Mitglied werden</Link>
-            <a href="mailto:info@bfc-flensburg.de" style={{ padding: '14px 28px', background: 'rgba(255,255,255,0.12)', color: 'white', fontSize: 15, fontWeight: 500, borderRadius: 10, border: '1px solid rgba(255,255,255,0.25)' }}>Frage stellen</a>
+            <Link href="/kontakt" style={{ padding: '14px 28px', background: 'rgba(255,255,255,0.12)', color: 'white', fontSize: 15, fontWeight: 500, borderRadius: 10, border: '1px solid rgba(255,255,255,0.25)' }}>Frage stellen</Link>
           </div>
         </div>
       </div>
