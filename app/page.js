@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ACCENT = '#0C3573';
 const ACCENT_LIGHT = '#1554BB';
-const BLUE = '#1565C0';
+const BLUE = '#071f4e';
 const BG = '#FFFFFF';
 const BG_ALT = '#E8F4FD';
 const CARD_BG = '#FFFFFF';
@@ -97,7 +97,7 @@ function Nav() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 40, width: 40, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: BLUE }}>Flensburg</span></span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
           {links.map(l => <Link key={l.href} href={l.href} style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.target.style.color = BLUE} onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>{l.label}</Link>)}
@@ -598,7 +598,7 @@ function Footer() {
         {/* Logo below card */}
         <div style={{ textAlign: 'center', paddingTop: 40 }}>
           <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 52, width: 52, objectFit: 'contain', filter: 'brightness(0) invert(1)', marginBottom: 10 }} />
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: BLUE }}>Flensburg</span></div>
+          <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></div>
         </div>
       </div>
       <style>{`@media(max-width:860px){.footer-nav-grid{grid-template-columns:1fr 1fr 1fr!important}}@media(max-width:540px){.footer-nav-grid{grid-template-columns:1fr 1fr!important}}`}</style>

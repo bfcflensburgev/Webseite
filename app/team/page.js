@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const ACCENT = '#0C3573';
-const BLUE = '#1565C0';
+const BLUE = '#071f4e';
 const BG = '#FFFFFF';
 const BG_ALT = '#E8F4FD';
 const BORDER = '#BDD7F5';
@@ -25,7 +25,7 @@ function Nav() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 40, width: 40, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: BLUE }}>Flensburg</span></span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
           {links.map(l => (
@@ -379,7 +379,7 @@ export default function TeamPage() {
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 36, width: 36, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-            <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: BLUE }}>Flensburg</span></span>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
           </div>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
             <Link href="/" style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Startseite</Link>

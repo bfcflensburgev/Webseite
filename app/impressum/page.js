@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const ACCENT = '#0C3573';
-const BLUE = '#1565C0';
+const BLUE = '#071f4e';
 const TEXT_MUTED = '#6B7280';
 const BORDER = '#BDD7F5';
 
