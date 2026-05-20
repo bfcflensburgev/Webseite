@@ -139,7 +139,7 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.25) 100%)', pointerEvents: 'none' }} />
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 820 }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', padding: '8px 20px', borderRadius: 24, marginBottom: 28, border: '1px solid rgba(255,255,255,0.2)' }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: BLUE }} />
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', display: 'inline-block', animation: 'pulseGreen 1.8s ease-out infinite', flexShrink: 0 }} />
           <span style={{ fontSize: 13, fontWeight: 600, color: 'white', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Nördlichster Börsenverein Deutschlands</span>
         </div>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: 'clamp(40px, 7vw, 78px)', color: 'white', fontWeight: 600, lineHeight: 1.08, marginBottom: 22, textShadow: '0 2px 20px rgba(0,0,0,0.3)', letterSpacing: '-0.01em' }}>
