@@ -499,15 +499,15 @@ function FAQ() {
   return (
     <Section id="faq" bg={BG}>
       <SectionHeader tag="FAQ" title="Häufig gestellte Fragen" />
-      <div style={{ maxWidth: 700, margin: '0 auto' }}>
+      <div style={{ maxWidth: 700, margin: '0 auto', background: CARD_BG, borderRadius: 16, border: `1px solid ${BORDER}`, boxShadow: '0 4px 24px rgba(12,53,115,0.06)', overflow: 'hidden' }}>
         {faqs.map((f, i) => (
-          <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
-            <button onClick={() => setOpen(open === i ? null : i)} style={{ width: '100%', padding: '20px 0', background: 'none', border: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', fontFamily: "var(--font-body)" }}>
+          <div key={i} style={{ borderBottom: i < faqs.length - 1 ? `1px solid ${BORDER}` : 'none' }}>
+            <button onClick={() => setOpen(open === i ? null : i)} style={{ width: '100%', padding: '20px 28px', background: 'none', border: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', fontFamily: "var(--font-body)" }}>
               <span style={{ fontSize: 16, fontWeight: 600, color: ACCENT, textAlign: 'left' }}>{f.q}</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={BLUE} strokeWidth="2" style={{ transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0, marginLeft: 16 }}><path d="M12 5v14M5 12h14" /></svg>
             </button>
             <div style={{ maxHeight: open === i ? 200 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
-              <div style={{ paddingBottom: 20, fontSize: 15, color: TEXT_MUTED, lineHeight: 1.6 }}>{f.a}</div>
+              <div style={{ padding: '0 28px 20px', fontSize: 15, color: TEXT_MUTED, lineHeight: 1.6 }}>{f.a}</div>
             </div>
           </div>
         ))}
