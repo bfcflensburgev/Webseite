@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ACCENT = '#0C3573';
 const ACCENT_LIGHT = '#1554BB';
-const BLUE = '#2196F3';
+const BLUE = '#1565C0';
 const BG = '#FFFFFF';
 const BG_ALT = '#E8F4FD';
 const CARD_BG = '#FFFFFF';

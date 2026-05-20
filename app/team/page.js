@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const ACCENT = '#0C3573';
-const BLUE = '#2196F3';
+const BLUE = '#1565C0';
 const BG = '#FFFFFF';
 const BG_ALT = '#E8F4FD';
 const BORDER = '#BDD7F5';
