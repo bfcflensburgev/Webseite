@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ACCENT = '#0C3573';
 const ACCENT_LIGHT = '#1554BB';
@@ -75,11 +76,12 @@ function LogoSlider() {
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 80, background: `linear-gradient(to left, ${BG}, transparent)`, zIndex: 2, pointerEvents: 'none' }} />
       <div style={{ display: 'flex', alignItems: 'center', gap: 48, animation: 'slideLogos 30s linear infinite', width: 'max-content' }}>
         {allLogos.map((l, i) => (
-          <img key={i} src={l.src} alt={l.alt}
-            style={{ height: 32, objectFit: 'contain', opacity: 0.6, transition: 'opacity 0.3s' }}
-            onMouseEnter={e => e.target.style.opacity = '1'}
-            onMouseLeave={e => e.target.style.opacity = '0.55'}
-          />
+          <div key={i} style={{ position: 'relative', height: 32, width: 110, flexShrink: 0, opacity: 0.6, transition: 'opacity 0.3s' }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '0.55'}
+          >
+            <Image src={l.src} alt={l.alt} fill style={{ objectFit: 'contain' }} />
+          </div>
         ))}
       </div>
       <style>{`@keyframes slideLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
@@ -96,7 +98,7 @@ function Nav() {
     <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? 'rgba(12,53,115,0.96)' : 'linear-gradient(to bottom, rgba(0,0,0,0.35), transparent)', backdropFilter: scrolled ? 'blur(14px)' : 'none', transition: 'all 0.4s ease', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 40, width: 40, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+          <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={40} height={40} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
           <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
@@ -127,12 +129,9 @@ function Hero() {
       padding: '120px 24px 80px',
       position: 'relative',
       overflow: 'hidden',
-      backgroundImage: 'url(/images/pexels-yr-9755155-6370532.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center 40%',
-      backgroundRepeat: 'no-repeat',
       backgroundColor: ACCENT,
     }}>
+      <Image src="/images/pexels-yr-9755155-6370532.jpg" alt="" fill priority style={{ objectFit: 'cover', objectPosition: 'center 40%', zIndex: 0 }} />
       {/* Dark blue overlay over the photo */}
       <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(12,53,115,0.78) 0%, rgba(12,53,115,0.65) 60%, rgba(12,53,115,0.85) 100%)`, pointerEvents: 'none' }} />
       {/* Subtle vignette */}
@@ -182,8 +181,8 @@ function ChristianRoehl() {
   return (
     <section style={{ background: BG, padding: '0 24px 0', borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '36px 0', display: 'flex', alignItems: 'center', gap: 28 }} className="roehl-strip">
-        <div style={{ width: 72, height: 72, borderRadius: '50%', border: `2px solid ${BLUE}40`, overflow: 'hidden', flexShrink: 0 }}>
-          <img src="/images/team/Christian-roehl.jpeg" alt="Christian W. Röhl" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+        <div style={{ width: 72, height: 72, borderRadius: '50%', border: `2px solid ${BLUE}40`, overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
+          <Image src="/images/team/Christian-roehl.jpeg" alt="Christian W. Röhl" fill style={{ objectFit: 'cover', objectPosition: 'center top' }} />
         </div>
         <div style={{ flex: 1 }}>
           <span style={{ fontSize: 13, color: BLUE, fontWeight: 700, marginRight: 8, userSelect: 'none' }}>"</span>
@@ -279,8 +278,8 @@ function TeamPreview() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
         {vorstand.map(p => (
           <HoverCard key={p.name} style={{ padding: 0, overflow: 'hidden' }}>
-            <div style={{ height: 260, background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-              {p.img ? <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} /> :
+            <div style={{ height: 260, background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
+              {p.img ? <Image src={p.img} alt={p.name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} /> :
                 <div style={{ width: 64, height: 64, borderRadius: '50%', background: `${ACCENT}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: 24, color: ACCENT }}>{p.name.split(' ').map(n => n[0]).join('')}</span></div>}
             </div>
             <div style={{ padding: '20px 20px 24px' }}>
@@ -306,6 +305,12 @@ function TeamPreview() {
   );
 }
 
+function PartnerLogo({ src, name }) {
+  const [err, setErr] = useState(false);
+  if (err) return <span style={{ fontSize: 20, fontWeight: 700, color: ACCENT }}>{name}</span>;
+  return <Image src={src} alt={name} width={170} height={44} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain', width: 'auto', height: 'auto' }} onError={() => setErr(true)} />;
+}
+
 function PartnerSection() {
   const partners = [
     { name: 'Bundesverband der Börsenvereine (BVH)', desc: 'Dachverband von über 70 Hochschulvereinen & über 24.000 Studierenden. Mehr Infos & alle Vereine auf bvh.org.', logo: '/images/logos/bvh.png', href: 'https://www.bvh.org' },
@@ -321,9 +326,7 @@ function PartnerSection() {
           <FadeInUp key={p.name} delay={i * 100}>
             <HoverCard style={{ padding: '28px 28px 28px', height: '100%' }}>
               <div style={{ height: 64, display: 'flex', alignItems: 'center', marginBottom: 20 }}>
-                <img src={p.logo} alt={p.name} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain' }}
-                  onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
-                <span style={{ display: 'none', fontSize: 20, fontWeight: 700, color: ACCENT }}>{p.name}</span>
+                <PartnerLogo src={p.logo} name={p.name} />
               </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: ACCENT, marginBottom: 10 }}>{p.name}</h3>
               <p style={{ fontSize: 14, color: TEXT_MUTED, lineHeight: 1.6, marginBottom: p.href ? 16 : 0 }}>{p.desc}</p>
@@ -377,11 +380,11 @@ function Events() {
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>Ein Wochenende mit Studierenden aus ganz Deutschland. Business Speed-Dating, Workshops, Börsenführung und Networking mit großen Unternehmen.</p>
           </div>
           <div className="bvh-photos" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, padding: '0 12px 12px' }}>
-            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4' }}>
-              <img src="/images/bvh-boerse.jpg" alt="Deutsche Börse Frankfurt" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} />
+            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4', position: 'relative' }}>
+              <Image src="/images/bvh-boerse.jpg" alt="Deutsche Börse Frankfurt" fill style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
             </div>
-            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4' }}>
-              <img src="/images/bvh-gebaeude.jpg" alt="BVH Konferenz Frankfurt" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
+            <div style={{ borderRadius: 10, overflow: 'hidden', aspectRatio: '3/4', position: 'relative' }}>
+              <Image src="/images/bvh-gebaeude.jpg" alt="BVH Konferenz Frankfurt" fill style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
             </div>
           </div>
         </HoverCard>
@@ -410,7 +413,7 @@ function PhotoTile({ src, label, pos = 'center', style: s = {}, className = '' }
       className={className}
       style={{ borderRadius: 16, overflow: 'hidden', position: 'relative', ...s }}
     >
-      <img src={src} alt={label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, transition: 'transform 0.5s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }} />
+      <Image src={src} alt={label} fill style={{ objectFit: 'cover', objectPosition: pos, transition: 'transform 0.5s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 20px 16px', background: 'linear-gradient(transparent, rgba(12,53,115,0.6))', opacity: hovered ? 1 : 0.75, transition: 'opacity 0.3s' }}>
         <span style={{ fontSize: 13, fontWeight: 600, color: 'white', letterSpacing: '0.01em' }}>{label}</span>
       </div>
@@ -451,8 +454,8 @@ function ImageBreak() {
           </p>
           <Link href="/mitglied" style={{ display: 'inline-block', padding: '12px 28px', background: BLUE, color: 'white', fontSize: 14, fontWeight: 600, borderRadius: 8, boxShadow: `0 4px 20px ${BLUE}35` }}>Jetzt dabei sein</Link>
         </div>
-        <div style={{ borderRadius: 16, overflow: 'hidden', height: 380, boxShadow: '0 8px 40px rgba(12,53,115,0.10)' }}>
-          <img src="/images/clemens-van-lay-koHhkSv_EU8-unsplash.jpg" alt="Finanzwelt" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }} />
+        <div style={{ borderRadius: 16, overflow: 'hidden', height: 380, boxShadow: '0 8px 40px rgba(12,53,115,0.10)', position: 'relative' }}>
+          <Image src="/images/clemens-van-lay-koHhkSv_EU8-unsplash.jpg" alt="Finanzwelt" fill style={{ objectFit: 'cover', objectPosition: 'center 60%' }} />
         </div>
       </div>
       <style>{`@media(max-width:768px){.imgbreak-grid{grid-template-columns:1fr!important}}`}</style>
@@ -465,7 +468,7 @@ function MitgliedCTA() {
     <section style={{ background: BG, padding: 'clamp(60px, 8vw, 90px) 24px' }}>
       <div style={{ maxWidth: 800, margin: '0 auto' }}>
         <div style={{ background: `linear-gradient(135deg, ${ACCENT} 0%, #1554BB 100%)`, borderRadius: 24, padding: 'clamp(40px, 6vw, 64px)', textAlign: 'center', boxShadow: `0 20px 60px rgba(12,53,115,0.18)` }}>
-          <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 64, width: 64, objectFit: 'contain', filter: 'brightness(0) invert(1)', margin: '0 auto 24px' }} />
+          <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={64} height={64} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block', margin: '0 auto 24px' }} />
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 'clamp(28px, 4vw, 46px)', color: 'white', fontWeight: 700, lineHeight: 1.15, marginBottom: 16 }}>
             Werde Mitglied beim<br /><span style={{ color: '#7EC8F8' }}>BFC Flensburg</span>
           </h2>
@@ -597,7 +600,7 @@ function Footer() {
 
         {/* Logo below card */}
         <div style={{ textAlign: 'center', paddingTop: 40 }}>
-          <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 52, width: 52, objectFit: 'contain', filter: 'brightness(0) invert(1)', marginBottom: 10 }} />
+          <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={52} height={52} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)', marginBottom: 10 }} />
           <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></div>
         </div>
       </div>

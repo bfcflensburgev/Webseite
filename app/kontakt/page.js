@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ACCENT = '#0C3573';
 const BLUE = '#071f4e';
@@ -81,7 +82,7 @@ export default function KontaktPage() {
       {/* Nav */}
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(12,53,115,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.08)', height: 64, display: 'flex', alignItems: 'center', padding: '0 24px', justifyContent: 'space-between' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 36, width: 36, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+          <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={36} height={36} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
           <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
         </Link>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>

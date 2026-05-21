@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ACCENT = '#0C3573';
 const BLUE = '#071f4e';
@@ -24,7 +25,7 @@ function Nav() {
     <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(12,53,115,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 40, width: 40, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+          <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={40} height={40} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
           <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
@@ -70,7 +71,7 @@ function MemberCard({ person }) {
     >
       <div style={{ height: 300, background: `linear-gradient(135deg, ${ACCENT}15, ${BLUE}10)`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
         {person.img ? (
-          <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: person.imgPos || 'top' }} />
+          <Image src={person.img} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: person.imgPos || 'top' }} />
         ) : (
           <div style={{ width: 96, height: 96, borderRadius: '50%', background: `${ACCENT}18`, border: `3px solid ${BLUE}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ fontSize: 32, fontWeight: 700, color: ACCENT }}>{person.name.split(' ').map(n => n[0]).join('')}</span>
@@ -127,9 +128,9 @@ function AlumniCard({ person }) {
         gap: 0,
       }}
     >
-      <div style={{ width: 90, height: 90, flexShrink: 0, borderRadius: '50%', background: `linear-gradient(135deg, ${ACCENT}15, ${BLUE}10)`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', margin: '12px 0 12px 12px', border: `2px solid ${BORDER}` }}>
+      <div style={{ width: 90, height: 90, flexShrink: 0, borderRadius: '50%', background: `linear-gradient(135deg, ${ACCENT}15, ${BLUE}10)`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', margin: '12px 0 12px 12px', border: `2px solid ${BORDER}`, position: 'relative' }}>
         {person.img ? (
-          <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: person.imgPos || 'top' }} />
+          <Image src={person.img} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: person.imgPos || 'top' }} />
         ) : (
           <span style={{ fontSize: 22, fontWeight: 700, color: ACCENT }}>{person.name.split(' ').map(n => n[0]).join('')}</span>
         )}
@@ -345,9 +346,9 @@ export default function TeamPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20, maxWidth: 560, margin: '0 auto' }}>
             {schirmherrschaft.map(p => (
               <div key={p.name} style={{ background: CARD_BG, borderRadius: 14, border: `1px solid ${BORDER}`, padding: '28px 24px', textAlign: 'center' }}>
-                <div style={{ width: 80, height: 80, borderRadius: '50%', background: `${ACCENT}12`, border: `2px solid ${BLUE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', overflow: 'hidden' }}>
+                <div style={{ width: 80, height: 80, borderRadius: '50%', background: `${ACCENT}12`, border: `2px solid ${BLUE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', overflow: 'hidden', position: 'relative' }}>
                   {p.img ? (
-                    <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.imgPos || 'center top' }} />
+                    <Image src={p.img} alt={p.name} fill style={{ objectFit: 'cover', objectPosition: p.imgPos || 'center top' }} />
                   ) : (
                     <span style={{ fontSize: 22, fontWeight: 700, color: ACCENT }}>{p.name.split(' ').slice(-1)[0][0]}</span>
                   )}
@@ -378,7 +379,7 @@ export default function TeamPage() {
       <footer style={{ background: ACCENT, padding: '36px 24px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <img src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" style={{ height: 36, width: 36, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+            <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={36} height={36} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
             <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
           </div>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
