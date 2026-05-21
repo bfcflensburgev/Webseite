@@ -1,13 +1,34 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Business and Finance Club Flensburg e.V.',
-  description: 'Der nördlichste Hochschulverein im Netzwerk des Bundesverbands der Börsenvereine an deutschen Hochschulen – direkt in Flensburg.',
+  metadataBase: new URL('https://www.bfc-flensburg.de'),
+  title: {
+    default: 'BFC Flensburg – Nördlichster Börsenverein | Finanzclub für Studierende',
+    template: '%s – BFC Flensburg e.V.',
+  },
+  description: 'Der Business and Finance Club Flensburg e.V. ist der nördlichste Hochschulverein im BVH-Netzwerk. Finanzbildung, Workshops, Events und Netzwerk für Studierende – direkt in Flensburg.',
+  keywords: ['Börsenverein Flensburg', 'Finanzclub Studierende', 'BVH Flensburg', 'Business Finance Club Flensburg', 'Finanzbildung Flensburg', 'BFC Flensburg'],
+  authors: [{ name: 'Business and Finance Club Flensburg e.V.' }],
   openGraph: {
-    title: 'Business and Finance Club Flensburg e.V.',
-    description: 'Finanzen verstehen. Chancen ermöglichen. Netzwerk aufbauen.',
     type: 'website',
     locale: 'de_DE',
+    url: 'https://www.bfc-flensburg.de',
+    siteName: 'BFC Flensburg',
+    title: 'BFC Flensburg – Nördlichster Börsenverein in Deutschland',
+    description: 'Finanzbildung, Workshops und Netzwerk für Studierende. Mitgliedschaft ab 12 € pro Halbjahr. Direkt in Flensburg.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BFC Flensburg – Nördlichster Börsenverein',
+    description: 'Finanzbildung, Workshops und Netzwerk für Studierende in Flensburg.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: 'https://www.bfc-flensburg.de',
   },
 };
 

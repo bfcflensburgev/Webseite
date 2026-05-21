@@ -606,9 +606,41 @@ function Footer() {
   );
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'NGO',
+      '@id': 'https://www.bfc-flensburg.de/#organization',
+      name: 'Business and Finance Club Flensburg e.V.',
+      alternateName: 'BFC Flensburg',
+      url: 'https://www.bfc-flensburg.de',
+      logo: 'https://www.bfc-flensburg.de/images/Logo/bfc_logo.png',
+      email: 'info@bfc-flensburg.de',
+      address: { '@type': 'PostalAddress', streetAddress: 'Kanzleistr. 91–93', addressLocality: 'Flensburg', postalCode: '24943', addressCountry: 'DE' },
+      sameAs: ['https://www.linkedin.com/company/bfc-flensburg', 'https://www.instagram.com/bfc.flensburg/'],
+      memberOf: { '@type': 'Organization', name: 'Bundesverband der Börsenvereine an deutschen Hochschulen (BVH)', url: 'https://www.bvh.org' },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.bfc-flensburg.de/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: 'Was genau macht ihr eigentlich?', acceptedAnswer: { '@type': 'Answer', text: 'Wir organisieren Vorträge, Workshops und Events und ermöglichen unseren Mitgliedern Zugang zum bundesweiten Netzwerk des BVH.' } },
+        { '@type': 'Question', name: 'Muss ich BWL studieren?', acceptedAnswer: { '@type': 'Answer', text: 'Nein. Interesse und Motivation sind entscheidend, nicht dein Studiengang.' } },
+        { '@type': 'Question', name: 'Brauche ich Vorkenntnisse?', acceptedAnswer: { '@type': 'Answer', text: 'Nein. Unsere Veranstaltungen bieten sowohl Einsteigern als auch Fortgeschrittenen Möglichkeiten zu profitieren.' } },
+        { '@type': 'Question', name: 'Was kostet die Mitgliedschaft?', acceptedAnswer: { '@type': 'Answer', text: '12 Euro pro Halbjahr für Studierende und Auszubildende, 22 Euro für alle anderen.' } },
+        { '@type': 'Question', name: 'Wie werde ich Mitglied?', acceptedAnswer: { '@type': 'Answer', text: 'Du füllst das Beitrittsformular auf unserer Website aus und wir melden uns zeitnah bei dir.' } },
+        { '@type': 'Question', name: 'Kann ich erst reinschnuppern?', acceptedAnswer: { '@type': 'Answer', text: 'Ja. Du kannst gerne an ausgewählten Veranstaltungen teilnehmen und dir selbst ein Bild machen.' } },
+        { '@type': 'Question', name: 'Wie kann ich kündigen?', acceptedAnswer: { '@type': 'Answer', text: 'Per E-Mail an info@bfc-flensburg.de. Die Kündigung ist bis zum Zahlungsziel (01.04. / 01.10.) möglich.' } },
+      ],
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
       <Hero />
       <UeberUns />
