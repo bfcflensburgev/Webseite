@@ -30,14 +30,20 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.bfc-flensburg.de',
   },
+  icons: {
+    icon: [
+      { url: '/images/Logo/cropped-bfc_icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/Logo/cropped-bfc_icon-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: { url: '/images/Logo/cropped-bfc_icon-180x180.png', sizes: '180x180' },
+    shortcut: '/images/Logo/cropped-bfc_icon-32x32.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <head>
-        <link rel="icon" href="/images/Logo/bfc_icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/images/Logo/cropped-bfc_icon-180x180.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
