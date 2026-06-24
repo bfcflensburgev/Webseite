@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" fill="#B5253A"/>
+  <text
+    x="250"
+    y="310"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="220"
+    font-weight="400"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="-4"
+  >EEP</text>
+  <rect x="60" y="360" width="380" height="10" fill="white"/>
+</svg>
