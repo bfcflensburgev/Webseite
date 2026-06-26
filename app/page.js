@@ -598,7 +598,7 @@ function Footer() {
             <span style={{ fontSize: 13, color: TEXT_MUTED }}>© {new Date().getFullYear()} BFC Flensburg e.V.</span>
           </div>
           <div style={{ textAlign: 'center', paddingTop: 12 }}>
-            <span style={{ fontSize: 12, color: TEXT_MUTED }}>Made with ♥ in Flensburg by <a href="https://de.linkedin.com/in/daneel-klink" target="_blank" rel="noopener noreferrer" style={{ color: TEXT_MUTED, textDecoration: 'underline' }}>Klink</a></span>
+            <span style={{ fontSize: 12, color: TEXT_MUTED }}>Made with ❤️ in Flensburg by <a href="https://de.linkedin.com/in/daneel-klink" target="_blank" rel="noopener noreferrer" style={{ color: TEXT_MUTED, textDecoration: 'underline' }}>Klink</a></span>
           </div>
         </div>
 
