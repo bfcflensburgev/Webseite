@@ -322,7 +322,7 @@ export default function TeamPage() {
       </section>
 
       {/* Alumni */}
-      <section style={{ background: BG, padding: 'clamp(48px, 8vw, 80px) 24px' }}>
+      <section id="alumni" style={{ background: BG, padding: 'clamp(48px, 8vw, 80px) 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <SectionHeader
             tag="Alumni"
