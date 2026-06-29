@@ -1,4 +1,21 @@
 import './globals.css';
+import { Cormorant_Garamond, Outfit } from 'next/font/google';
+import CookieBanner from './CookieBanner';
+
+const cormorant = Cormorant_Garamond({
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export const metadata = {
   metadataBase: new URL('https://www.bfc-flensburg.de'),
@@ -42,14 +59,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="de">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+    <html lang="de" className={`${cormorant.variable} ${outfit.variable}`}>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }
