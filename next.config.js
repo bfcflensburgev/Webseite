@@ -25,9 +25,8 @@ const nextConfig = {
       { source: '/unternehmen', destination: '/kontakt', permanent: true },
       { source: '/fuer-partner', destination: '/kontakt', permanent: true },
       { source: '/partner', destination: '/', permanent: true },
-      // Old event/blog posts (wildcard)
+      // Old event posts (wildcard)
       { source: '/events/:slug*', destination: '/', permanent: true },
-      { source: '/blog/:slug*', destination: '/', permanent: true },
       // Specific old pages seen in Google Search
       { source: '/sydbank-portfolioaufbau-und-:slug*', destination: '/', permanent: true },
       { source: '/:year(\\d{4})/:month(\\d{2})/:slug*', destination: '/', permanent: true },
