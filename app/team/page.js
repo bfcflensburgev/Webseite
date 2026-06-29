@@ -26,7 +26,7 @@ function Nav() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={40} height={40} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC Flensburg</span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
           {links.map(l => (
@@ -380,7 +380,7 @@ export default function TeamPage() {
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={36} height={36} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-            <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: 'white' }}>BFC Flensburg</span>
           </div>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
             <Link href="/" style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Startseite</Link>

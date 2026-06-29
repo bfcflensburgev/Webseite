@@ -22,7 +22,7 @@ export default function BlogIndex() {
       <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(12,53,115,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', height: 64, gap: 24 }}>
           <Link href="/" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>← Zurück</Link>
-          <span style={{ fontSize: 18, fontWeight: 700, color: 'white', fontFamily: 'var(--font-display)' }}>BFC <span style={{ color: '#7EC8F8' }}>Blog</span></span>
+          <span style={{ fontSize: 18, fontWeight: 700, color: 'white', fontFamily: 'var(--font-display)' }}>BFC Blog</span>
         </div>
       </nav>
 

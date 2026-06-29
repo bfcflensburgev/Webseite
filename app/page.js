@@ -99,7 +99,7 @@ function Nav() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={40} height={40} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: 'white', letterSpacing: '0.01em' }}>BFC Flensburg</span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="nav-desktop">
           {links.map(l => <Link key={l.href} href={l.href} style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', fontWeight: 500, transition: 'color 0.2s' }} onMouseEnter={e => e.target.style.color = BLUE} onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}>{l.label}</Link>)}

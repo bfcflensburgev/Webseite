@@ -83,7 +83,7 @@ export default function KontaktPage() {
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(12,53,115,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.08)', height: 64, display: 'flex', alignItems: 'center', padding: '0 24px', justifyContent: 'space-between' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Image src="/images/Logo/bfc_logo.png" alt="BFC Flensburg" width={36} height={36} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: 'white' }}>BFC Flensburg</span>
         </Link>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -188,7 +188,7 @@ export default function KontaktPage() {
       {/* Footer */}
       <footer style={{ background: ACCENT, padding: '28px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, color: 'white' }}>BFC <span style={{ color: '#7EC8F8' }}>Flensburg</span></span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, color: 'white' }}>BFC Flensburg</span>
           <div style={{ display: 'flex', gap: 20 }}>
             <Link href="/datenschutz" style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Datenschutz</Link>
             <Link href="/impressum" style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Impressum</Link>
