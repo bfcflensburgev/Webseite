@@ -93,7 +93,7 @@ function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => { const fn = () => setScrolled(window.scrollY > 40); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
-  const links = [{ label: 'Über uns', href: '#ueber' },{ label: 'Vorteile', href: '#vorteile' },{ label: 'Partner', href: '#partner' },{ label: 'Events', href: '#events' },{ label: 'FAQ', href: '#faq' },{ label: 'Team', href: '/team' }];
+  const links = [{ label: 'Über uns', href: '#ueber' },{ label: 'Vorteile', href: '#vorteile' },{ label: 'Partner', href: '#partner' },{ label: 'Events', href: '#events' },{ label: 'FAQ', href: '#faq' },{ label: 'Team', href: '/team' },{ label: 'Blog', href: '/blog' }];
   return (
     <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? 'rgba(12,53,115,0.96)' : 'linear-gradient(to bottom, rgba(0,0,0,0.35), transparent)', backdropFilter: scrolled ? 'blur(14px)' : 'none', transition: 'all 0.4s ease', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
