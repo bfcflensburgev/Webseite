@@ -31,10 +31,12 @@ export default function ImpressumPage() {
         <section style={{ marginBottom: 40 }}>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 700, color: ACCENT, marginBottom: 16 }}>Vertreten durch</h2>
           <p style={{ fontSize: 16, lineHeight: 1.8, color: '#1a1a1a' }}>
-            Colin Lohse (Vorstandsvorsitzender)<br />
-            Daneel Klink (Stellv. Vorsitzender)<br />
-            Jakob Barth (Finanzvorstand)
-          </p>
+            Robin Holweg (Vorstandsvorsitzender)<br />
+            Tim Langmaack (Stellv. Vorsitzender)<br />
+            Paulo Temme (Finanzvorstand) <br />
+         Marina Jensen (Vorstand für Events & Kommunikation) <br />
+             Moritz Vanselow (Vorstand für Mitglieder) <br />
+              </p>
         </section>
 
         <section style={{ marginBottom: 40 }}>
