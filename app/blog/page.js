@@ -27,6 +27,12 @@ export default function BlogIndex() {
       </nav>
 
       <main style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(48px, 8vw, 80px) 24px' }}>
+        <style>{`
+          .blog-card:hover {
+            box-shadow: 0 8px 32px rgba(12,53,115,0.10);
+            border-color: ${BLUE}40;
+          }
+        `}</style>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 52px)', color: ACCENT, fontWeight: 600, marginBottom: 12 }}>
           Finanzwissen für Studierende
         </h1>
@@ -37,16 +43,13 @@ export default function BlogIndex() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {posts.map(post => (
             <Link key={post.slug} href={`/blog/${post.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
-              <article style={{
+              <article className="blog-card" style={{
                 padding: '28px 32px',
                 background: 'white',
                 borderRadius: 12,
                 border: `1px solid ${BORDER}`,
                 transition: 'box-shadow 0.2s, border-color 0.2s',
-              }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 8px 32px rgba(12,53,115,0.10)'; e.currentTarget.style.borderColor = `${BLUE}40`; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = BORDER; }}
-              >
+              }}>
                 <div style={{ display: 'flex', gap: 12, marginBottom: 12, alignItems: 'center' }}>
                   <span style={{ fontSize: 12, fontWeight: 700, color: BLUE, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{post.category}</span>
                   <span style={{ fontSize: 12, color: TEXT_MUTED }}>{post.readingTime} Lesezeit</span>
