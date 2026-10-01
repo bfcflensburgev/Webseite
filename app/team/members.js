@@ -9,7 +9,8 @@ export const vorstand = [
     "name": "Tim Langmaack",
     "position": "Stellv. Vorsitzender",
     "role": "Stellvertreter",
-    "img": "/images/team/tim-langmaack.jpeg"
+    "img": "/images/team/tim-langmaack.jpeg",
+    "desc": "Studium Business Administration (B.A.), Schwerpunkt Controlling."
   },
   {
     "name": "Paulo Temme",
@@ -21,12 +22,14 @@ export const vorstand = [
     "name": "Marina Jensen",
     "position": "Vorstand für Events & Kommunikation",
     "role": "Events & Kommunikation",
-    "img": "/images/team/marina-jensen.jpeg"
+    "img": "/images/team/marina-jensen.jpeg",
+    "desc": "Studium Business Administration (B.A.), Schwerpunkt Taxation & Accounting."
   },
   {
     "name": "Moritz Vanselow",
     "position": "Vorstand für Mitglieder",
     "role": "Mitglieder",
-    "img": "/images/team/moritz-vanselow.jpeg"
+    "img": "/images/team/moritz-vanselow.jpeg",
+    "desc": "Studium Business Administration (B.A.), Schwerpunkt Taxation & Accounting."
   }
 ];

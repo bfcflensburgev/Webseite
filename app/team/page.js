@@ -191,17 +191,9 @@ const beirat = [
 
 const alumni = [
   {
-    name: 'Dennis Rübsteck',
-    position: 'Ehem. Vorsitzender',
-    desc: 'Informatikstudium an der Hochschule Flensburg.',
-    img: '/images/ruebsteck.jpeg',
-    imgPos: 'center top',
-    linkedin: 'https://www.linkedin.com/in/dennis-ruebsteck/',
-  },
-  {
     name: 'Tom Pasing',
     position: 'Ehem. Finanzvorstand',
-    desc: 'Business Administration an der Copenhagen Business School.',
+    desc: 'Studium Business, Language & Culture (B.Sc.) an der Copenhagen Business School.',
     img: '/images/pasing.jpeg',
     imgPos: 'center top',
     linkedin: 'https://www.linkedin.com/in/tom-pasing/',
@@ -217,7 +209,7 @@ const alumni = [
   },
   {
     name: 'Julian Seyfarth',
-    position: 'MHP · FinTech Co-Founder',
+    position: 'Portfolio Manager · MHP – A Porsche Company',
     desc: 'M.A. Business Management (Note 1,7).',
     img: '/images/seyfarth.jpeg',
     imgPos: 'center top',
@@ -233,9 +225,10 @@ const alumni = [
   },
   {
     name: 'Matthis Kroh',
-    position: 'Senior Consultant · Deloitte',
-    desc: 'B.A. BWL Hochschule Flensburg.',
-    img: null,
+    position: 'Founder · Coreventa',
+    desc: 'Ex-Deloitte. Automatisierung von Büroprozessen im Mittelstand.',
+    img: '/images/team/matthis-kroh.png',
+    imgPos: 'center 35%',
     linkedin: 'https://www.linkedin.com/in/matthis-kroh/',
   },
   {
