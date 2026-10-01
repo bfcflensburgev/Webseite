@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { vorstand } from './members';
 
 const ACCENT = '#0C3573';
 const BLUE = '#071f4e';
@@ -69,9 +70,9 @@ function MemberCard({ person }) {
         boxShadow: hovered ? `0 16px 40px rgba(33,150,243,0.15)` : '0 2px 8px rgba(12,53,115,0.06)',
       }}
     >
-      <div style={{ height: 300, background: `linear-gradient(135deg, ${ACCENT}15, ${BLUE}10)`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ aspectRatio: '1 / 1', background: `linear-gradient(135deg, ${ACCENT}15, ${BLUE}10)`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
         {person.img ? (
-          <Image src={person.img} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: person.imgPos || 'top' }} />
+          <Image src={person.img} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: person.imgPos || 'center 35%' }} />
         ) : (
           <div style={{ width: 96, height: 96, borderRadius: '50%', background: `${ACCENT}18`, border: `3px solid ${BLUE}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ fontSize: 32, fontWeight: 700, color: ACCENT }}>{person.name.split(' ').map(n => n[0]).join('')}</span>
@@ -167,40 +168,31 @@ function SectionHeader({ tag, title, subtitle }) {
   );
 }
 
-const vorstand = [
+const beirat = [
   {
     name: 'Colin Lohse',
-    position: 'Vorstandsvorsitzender',
-    role: 'Vorsitzender',
-    desc: 'Schüler am Fördegymnasium Flensburg.',
+    position: 'Beirat · Ehem. Vorsitzender',
+    role: 'Beirat',
+    desc: 'BWL-Studium an der Universität Mannheim.',
     img: '/images/team/colin-lohse.png',
     imgPos: 'center 30%',
     linkedin: 'https://www.linkedin.com/in/colin-lohse/',
   },
   {
     name: 'Daneel Klink',
-    position: 'Stellv. Vorsitzender',
-    role: 'Stellvertreter',
-    desc: 'Junior IT-Security Specialist bei der Meesenburg Gruppe. Ausbildung zum Fachinformatiker für Systemintegration.',
+    position: 'Beirat · Ehem. stellv. Vorsitzender',
+    role: 'Beirat',
+    desc: 'Cyber-Security-Studium an der Hochschule Niederrhein.',
     img: '/images/team/daneel-klink.png',
     imgPos: 'center 30%',
     linkedin: 'https://www.linkedin.com/in/daneel-klink-b83917337/',
   },
-  {
-    name: 'Jakob Barth',
-    position: 'Finanzvorstand',
-    role: 'Finanzen',
-    desc: 'Ausbildung Kaufmann für Versicherung und Finanzanlagen bei der Provinzial. Studium Finanzmanagement an der IU Internationale Hochschule.',
-    img: null,
-    linkedin: 'https://www.linkedin.com/in/jakob-barth-0a4196300/',
-  },
 ];
 
-const beirat = [
+const alumni = [
   {
     name: 'Dennis Rübsteck',
     position: 'Ehem. Vorsitzender',
-    role: 'Beirat',
     desc: 'Informatikstudium an der Hochschule Flensburg.',
     img: '/images/ruebsteck.jpeg',
     imgPos: 'center top',
@@ -209,15 +201,12 @@ const beirat = [
   {
     name: 'Tom Pasing',
     position: 'Ehem. Finanzvorstand',
-    role: 'Beirat',
     desc: 'Business Administration an der Copenhagen Business School.',
     img: '/images/pasing.jpeg',
     imgPos: 'center top',
     linkedin: 'https://www.linkedin.com/in/tom-pasing/',
   },
-];
 
-const alumni = [
   {
     name: 'Adrian Sarwari',
     position: 'Growth AI Engineer · Parto',
@@ -300,9 +289,9 @@ export default function TeamPage() {
           <SectionHeader
             tag="Vorstand"
             title="Unser Vorstand"
-            subtitle="Vier Personen, eine Mission: Finanzbildung und Netzwerk für Studierende und Schüler in Flensburg."
+            subtitle="Fünf Personen, eine Mission: Finanzbildung und Netzwerk für Studierende und Schüler in Flensburg."
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 24 }}>
             {vorstand.map(p => <MemberCard key={p.name} person={p} />)}
           </div>
         </div>

@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { vorstand } from './team/members';
 
 const ACCENT = '#0C3573';
 const ACCENT_LIGHT = '#1554BB';
@@ -58,6 +59,7 @@ function FadeInUp({ children, delay = 0, style: s = {} }) {
 
 function LogoSlider() {
   const logos = [
+    { src: '/images/logos/pwc.png', alt: 'PwC' },
     { src: '/images/logos/bvh.png', alt: 'BVH' },
     { src: '/images/logos/bdo.png', alt: 'BDO' },
     { src: '/images/logos/preplounge.png', alt: 'PrepLounge' },
@@ -80,7 +82,7 @@ function LogoSlider() {
             onMouseEnter={e => e.currentTarget.style.opacity = '1'}
             onMouseLeave={e => e.currentTarget.style.opacity = '0.55'}
           >
-            <Image src={l.src} alt={l.alt} fill style={{ objectFit: 'contain' }} />
+            <Image src={l.src} alt={l.alt} fill style={{ objectFit: 'contain', transform: l.alt === 'PwC' ? 'scale(1.7)' : undefined }} />
           </div>
         ))}
       </div>
@@ -267,30 +269,25 @@ function Vorteile() {
 }
 
 function TeamPreview() {
-  const vorstand = [
-    { name: 'Colin Lohse', role: 'Vorstandsvorsitzender', desc: 'Schüler am Fördegymnasium', img: '/images/team/colin-lohse.png', linkedin: 'https://www.linkedin.com/in/colin-lohse/' },
-    { name: 'Daneel Klink', role: 'Stellv. Vorsitzender', desc: 'Junior IT-Security Specialist, Meesenburg Gruppe', img: '/images/team/daneel-klink.png', linkedin: 'https://www.linkedin.com/in/daneel-klink-b83917337/' },
-    { name: 'Jakob Barth', role: 'Finanzvorstand', desc: 'Studium Finanzmanagement, IU', img: null, linkedin: 'https://www.linkedin.com/in/jakob-barth-0a4196300/' },
-  ];
   return (
     <Section id="team">
       <SectionHeader tag="Team" title="Die Menschen hinter dem BFC" subtitle="Ehrenamtlich. Engagiert. Für euch." />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
         {vorstand.map(p => (
           <HoverCard key={p.name} style={{ padding: 0, overflow: 'hidden' }}>
-            <div style={{ height: 260, background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
-              {p.img ? <Image src={p.img} alt={p.name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} /> :
+            <div style={{ aspectRatio: '1 / 1', background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', position: 'relative' }}>
+              {p.img ? <Image src={p.img} alt={p.name} fill style={{ objectFit: 'cover', objectPosition: p.imgPos || 'center 35%' }} /> :
                 <div style={{ width: 64, height: 64, borderRadius: '50%', background: `${ACCENT}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: 24, color: ACCENT }}>{p.name.split(' ').map(n => n[0]).join('')}</span></div>}
             </div>
             <div style={{ padding: '20px 20px 24px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: ACCENT }}>{p.name}</div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: BLUE, marginTop: 2 }}>{p.role}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: BLUE, marginTop: 2 }}>{p.position}</div>
                 </div>
-                <a href={p.linkedin} target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {p.linkedin && <a href={p.linkedin} target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: `${ACCENT}08`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill={ACCENT}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
+                </a>}
               </div>
               <div style={{ fontSize: 13, color: TEXT_MUTED, lineHeight: 1.5, marginTop: 8 }}>{p.desc}</div>
             </div>
@@ -308,11 +305,12 @@ function TeamPreview() {
 function PartnerLogo({ src, name }) {
   const [err, setErr] = useState(false);
   if (err) return <span style={{ fontSize: 20, fontWeight: 700, color: ACCENT }}>{name}</span>;
-  return <Image src={src} alt={name} width={170} height={44} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain', width: 'auto', height: 'auto' }} onError={() => setErr(true)} />;
+  return <Image src={src} alt={name} width={170} height={44} style={{ maxHeight: 44, maxWidth: 170, objectFit: 'contain', width: 'auto', height: 'auto', transform: name === 'PwC' ? 'scale(1.7)' : undefined, transformOrigin: 'left center' }} onError={() => setErr(true)} />;
 }
 
 function PartnerSection() {
   const partners = [
+    { name: 'PwC', desc: 'Unser Kooperationspartner für Einblicke in Wirtschaftsprüfung, Steuerberatung und Unternehmensberatung.', logo: '/images/logos/pwc.png', href: 'https://www.pwc.de' },
     { name: 'Bundesverband der Börsenvereine (BVH)', desc: 'Dachverband von über 70 Hochschulvereinen & über 24.000 Studierenden. Mehr Infos & alle Vereine auf bvh.org.', logo: '/images/logos/bvh.png', href: 'https://www.bvh.org' },
     { name: 'BDO', desc: 'Internationale Wirtschaftsprüfungs- und Beratungsgesellschaft. Über 94.000 Mitarbeiter in 169 Ländern.', logo: '/images/logos/bdo.png', href: 'https://www.bdo.de' },
     { name: 'PrepLounge', desc: 'Die führende Plattform für Interview-Vorbereitung in Consulting und Finance.', logo: '/images/logos/preplounge.png', href: 'https://www.preplounge.com' },
