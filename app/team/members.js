@@ -3,7 +3,8 @@ export const vorstand = [
     "name": "Robin Holweg",
     "position": "Vorstandsvorsitzender",
     "role": "Vorsitzender",
-    "img": "/images/team/robin-holweg.jpeg"
+    "img": "/images/team/robin-holweg.jpeg",
+    "desc": "Selbstständig & Studium Finance an der ISM."
   },
   {
     "name": "Tim Langmaack",
